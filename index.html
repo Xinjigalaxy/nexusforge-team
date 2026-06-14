@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusForge 团队 | 创新开发团队</title>
+    <meta name="description" content="NexusForge - 一个充满激情的技术团队，专注于Web开发与创新解决方案。">
+    <style>
+        /* ==================== CSS 变量 & 重置 ==================== */
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #5A52D5;
+            --primary-light: #8B85FF;
+            --accent: #FF6B6B;
+            --accent-light: #FF8E8E;
+            --bg: #FAFBFF;
+            --bg-card: #FFFFFF;
+            --text: #2D2A4A;
+            --text-light: #6B6880;
+            --text-lighter: #9B98B0;
+            --border: #E8E6F5;
+            --shadow-sm: 0 2px 8px rgba(108, 99, 255, 0.06);
+            --shadow-md: 0 4px 20px rgba(108, 99, 255, 0.10);
+            --shadow-lg: 0 12px 40px rgba(108, 99, 255, 0.14);
+            --shadow-xl: 0 20px 60px rgba(108, 99, 255, 0.18);
+            --radius-sm: 10px;
+            --radius: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-main: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+            --max-width: 1200px;
+            --nav-height: 70px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==================== 导航栏 ==================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 1px 0 transparent;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+            background: rgba(255, 255, 255, 0.94);
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* LOGO */
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            flex-shrink: 0;
+        }
+
+        .nav-logo svg {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        /* 导航链接 */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            letter-spacing: 0.01em;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(108, 99, 255, 0.06);
+        }
+
+        /* 汉堡按钮 */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+            border-radius: 8px;
+            background: transparent;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--text);
+            border-radius: 4px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* ==================== 通用区块 ==================== */
+        .section {
+            padding: 90px 24px;
+        }
+
+        .section-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(108, 99, 255, 0.08);
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+            color: var(--text);
+            line-height: 1.25;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* ==================== Hero 区域 ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--nav-height);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-decoration {
+            position: absolute;
+            top: -180px;
+            right: -120px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle at center, rgba(108, 99, 255, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-bg-decoration-2 {
+            position: absolute;
+            bottom: -100px;
+            left: -80px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle at center, rgba(255, 107, 107, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero .section-container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            width: fit-content;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: #22C55E;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            color: var(--text);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 480px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(108, 99, 255, 0.35);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(108, 99, 255, 0.45);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.03);
+            transform: translateY(-2px);
+        }
+
+        /* Hero 视觉图 */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-card-stack {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 4/3;
+        }
+
+        .hero-card {
+            position: absolute;
+            background: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-card.card-main {
+            width: 85%;
+            height: 75%;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            background: linear-gradient(160deg, #fff 0%, #f8f7ff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+        }
+
+        .hero-card.card-main .card-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card.card-main .card-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+        }
+
+        .hero-card.card-main .card-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 60%;
+        }
+        .hero-card.card-main .card-lines span {
+            display: block;
+            height: 6px;
+            background: #e8e6f5;
+            border-radius: 4px;
+        }
+        .hero-card.card-main .card-lines span:nth-child(2) {
+            width: 70%;
+        }
+
+        .hero-card.card-float {
+            width: 55%;
+            height: 50%;
+            bottom: 0;
+            right: 0;
+            z-index: 4;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .hero-card.card-float .mini-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            height: 40px;
+        }
+        .hero-card.card-float .mini-chart .bar {
+            width: 10px;
+            border-radius: 6px 6px 0 0;
+            background: var(--primary-light);
+            animation: bar-grow 1.8s ease-out infinite alternate;
+        }
+        .hero-card.card-float .mini-chart .bar:nth-child(1) {
+            height: 22px;
+            animation-delay: 0s;
+        }
+        .hero-card.card-float .mini-chart .bar:nth-child(2) {
+            height: 34px;
+            animation-delay: 0.3s;
+        }
+        .hero-card.card-float .mini-chart .bar:nth-child(3) {
+            height: 28px;
+            animation-delay: 0.6s;
+            background: var(--accent-light);
+        }
+        .hero-card.card-float .mini-chart .bar:nth-child(4) {
+            height: 38px;
+            animation-delay: 0.9s;
+            background: var(--accent-light);
+        }
+
+        @keyframes bar-grow {
+            0% {
+                transform: scaleY(0.7);
+            }
+            100% {
+                transform: scaleY(1);
+            }
+        }
+
+        /* ==================== 关于我们 ==================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .about-visual {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .about-stat-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            flex: 1 1 120px;
+            min-width: 100px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .about-stat-card:hover {
+            border-color: var(--border);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+        .about-stat-card .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+        }
+        .about-stat-card .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        .about-text-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .about-text-content p {
+            color: var(--text-light);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        /* ==================== 团队成员 ==================== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 28px 20px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border);
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .team-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0;
+        }
+        .avatar-purple { background: linear-gradient(135deg, #6C63FF, #8B85FF); }
+        .avatar-coral { background: linear-gradient(135deg, #FF6B6B, #FF8E8E); }
+        .avatar-teal { background: linear-gradient(135deg, #0EA5A0, #2DD4BF); }
+        .avatar-amber { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+        .avatar-indigo { background: linear-gradient(135deg, #6366F1, #818CF8); }
+        .avatar-pink { background: linear-gradient(135deg, #EC4899, #F472B6); }
+        .avatar-green { background: linear-gradient(135deg, #10B981, #34D399); }
+        .avatar-blue { background: linear-gradient(135deg, #3B82F6, #60A5FA); }
+
+        .team-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 2px;
+        }
+        .team-card .role {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .team-card .bio {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .team-social a {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #f5f4fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+        .team-social a:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* ==================== 项目展示 ==================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border);
+        }
+
+        .project-thumb {
+            height: 180px;
+            background: linear-gradient(135deg, #e8e6f5 0%, #f0effb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-thumb .project-icon {
+            font-size: 3.5rem;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+        .project-card:hover .project-thumb .project-icon {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        .project-thumb .project-tag {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            padding: 5px 14px;
+            background: #fff;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-info {
+            padding: 20px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .project-info h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            flex: 1;
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .project-tech span {
+            padding: 4px 10px;
+            background: #f5f4fb;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        /* ==================== CTA 区域 ==================== */
+        .cta-section {
+            background: linear-gradient(135deg, #6C63FF 0%, #4F46E5 100%);
+            border-radius: var(--radius-xl);
+            padding: 50px 40px;
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+            top: -100px;
+            right: -60px;
+            pointer-events: none;
+        }
+        .cta-section h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section .btn {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section .btn-outline {
+            background: #fff;
+            color: var(--primary);
+            border-color: #fff;
+        }
+        .cta-section .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #fff;
+        }
+
+        /* ==================== 页脚 ==================== */
+        .footer {
+            background: #fff;
+            border-top: 1px solid var(--border);
+            padding: 36px 24px;
+            text-align: center;
+        }
+        .footer-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+        .footer-logo span {
+            color: var(--primary);
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        .footer-copy {
+            font-size: 0.8rem;
+            color: var(--text-lighter);
+        }
+
+        /* ==================== 回到顶部按钮 ==================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-md);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ==================== 响应式设计 ==================== */
+        @media (max-width: 900px) {
+            .hero .section-container {
+                grid-template-columns: 1fr;
+                gap: 36px;
+                text-align: center;
+            }
+            .hero-content {
+                align-items: center;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .hero-visual {
+                order: -1;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            .hero-card-stack {
+                max-width: 280px;
+                aspect-ratio: 4/3;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .about-visual {
+                order: -1;
+            }
+            .section-title {
+                text-align: center;
+            }
+            .section-desc {
+                text-align: center;
+                margin: 0 auto;
+            }
+            .section-tag {
+                display: block;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 320px;
+                height: 100vh;
+                background: #fff;
+                flex-direction: column;
+                padding: 90px 28px 40px;
+                gap: 6px;
+                box-shadow: var(--shadow-xl);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                align-items: stretch;
+            }
+            .nav-links.open {
+                right: 0;
+            }
+            .nav-links a {
+                padding: 12px 16px;
+                border-radius: var(--radius-sm);
+                font-size: 1.05rem;
+                width: 100%;
+                text-align: left;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .mobile-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.4);
+                z-index: 999;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+            }
+            .mobile-overlay.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .cta-section {
+                padding: 36px 20px;
+            }
+            .cta-section h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-card-stack {
+                max-width: 220px;
+            }
+            .section {
+                padding: 60px 16px;
+            }
+            .hero {
+                min-height: auto;
+                padding-top: calc(var(--nav-height) + 20px);
+                padding-bottom: 40px;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 11px 22px;
+                font-size: 0.88rem;
+            }
+            .about-stat-card {
+                min-width: 70px;
+                padding: 14px 16px;
+            }
+            .about-stat-card .stat-number {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 导航栏 ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" aria-label="NexusForge 团队首页">
+                <!-- SVG LOGO -->
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="12" fill="#6C63FF"/>
+                    <path d="M12 20L18 26L28 14" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">Nexus<span>Forge</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="active">首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#team">团队成员</a>
+                <a href="#projects">项目展示</a>
+                <a href="#contact">联系我们</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- ==================== Hero 区域 ==================== -->
+    <section class="hero section" id="hero">
+        <div class="hero-bg-decoration"></div>
+        <div class="hero-bg-decoration-2"></div>
+        <div class="section-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span> 团队协作中 · 随时可联系
+                </div>
+                <h1 class="hero-title">
+                    我们打造<span class="highlight">卓越</span>的
+                    数字体验
+                </h1>
+                <p class="hero-desc">
+                    NexusForge 是一支充满激情的技术团队，专注于 Web 开发、
+                    UI/UX 设计与创新解决方案，助力品牌在数字世界中脱颖而出。
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        查看作品
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">联系团队</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card-stack">
+                    <div class="hero-card card-main">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        </div>
+                        <div class="card-lines">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="hero-card card-float">
+                        <div class="mini-chart">
+                            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                        </div>
+                        <small style="color:#6B6880;font-weight:500;">📈 持续增长</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 关于我们 ==================== -->
+    <section class="section" id="about">
+        <div class="section-container">
+            <span class="section-tag">关于我们</span>
+            <h2 class="section-title">凝聚创新力量</h2>
+            <p class="section-desc">我们是一支跨学科的技术团队，致力于用代码和设计创造价值。</p>
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-stat-card">
+                        <div class="stat-number" data-count="25">0</div>
+                        <div class="stat-label">完成项目</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="stat-number" data-count="8">0</div>
+                        <div class="stat-label">团队成员</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="stat-number" data-count="3">0</div>
+                        <div class="stat-label">成立年数</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="stat-number" data-count="100">0</div>
+                        <div class="stat-label">% 热情</div>
+                    </div>
+                </div>
+                <div class="about-text-content">
+                    <h3>🚀 我们的故事</h3>
+                    <p>NexusForge 诞生于一群对技术充满热情的朋友之间。我们相信，优秀的软件不仅仅是代码的堆砌，更是对用户需求的深刻理解与对细节的不懈追求。</p>
+                    <p>从最初的小型项目起步，到如今能够承接复杂的企业级应用开发，我们始终保持着学习与成长的心态。每一位成员都是团队不可或缺的拼图。</p>
+                    <p>我们推崇<strong>开放协作、持续迭代</strong>的工作方式，确保每一个交付物都经得起考验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 团队成员 ==================== -->
+    <section class="section" id="team" style="background:#fff;">
+        <div class="section-container">
+            <span class="section-tag">核心成员</span>
+            <h2 class="section-title">认识我们的团队</h2>
+            <p class="section-desc">多元背景，共同目标——用技术创造影响力。</p>
+            <div class="team-grid">
+                <!-- 吉洋 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-purple">吉</div>
+                    <h4>吉洋</h4>
+                    <p class="role">全栈开发</p>
+                    <p class="bio">热爱技术，追求卓越，负责核心架构设计。</p>
+                    <div class="team-social">
+                        <a href="#" title="GitHub">GH</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+                <!-- 黄灵果 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-coral">黄</div>
+                    <h4>黄灵果</h4>
+                    <p class="role">前端开发</p>
+                    <p class="bio">专注用户体验与界面实现，让设计完美落地。</p>
+                    <div class="team-social">
+                        <a href="#" title="GitHub">GH</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+                <!-- 夏考洪 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-teal">夏</div>
+                    <h4>夏考洪</h4>
+                    <p class="role">后端开发</p>
+                    <p class="bio">擅长系统架构与性能优化，保障服务稳定。</p>
+                    <div class="team-social">
+                        <a href="#" title="GitHub">GH</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+                <!-- 雷骐源 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-amber">雷</div>
+                    <h4>雷骐源</h4>
+                    <p class="role">UI/UX 设计师</p>
+                    <p class="bio">创造美观且易用的设计，提升产品体验。</p>
+                    <div class="team-social">
+                        <a href="#" title="作品集">🎨</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+                <!-- 温厚焜 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-indigo">温</div>
+                    <h4>温厚焜</h4>
+                    <p class="role">测试工程师</p>
+                    <p class="bio">保障产品质量的最后一道防线，细致入微。</p>
+                    <div class="team-social">
+                        <a href="#" title="GitHub">GH</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+                <!-- 陈涛 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-pink">陈</div>
+                    <h4>陈涛</h4>
+                    <p class="role">DevOps 工程师</p>
+                    <p class="bio">自动化部署与持续集成，提升研发效率。</p>
+                    <div class="team-social">
+                        <a href="#" title="GitHub">GH</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+                <!-- 蒋熹奉 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-green">蒋</div>
+                    <h4>蒋熹奉</h4>
+                    <p class="role">项目经理</p>
+                    <p class="bio">协调团队，确保项目顺利交付，沟通力强。</p>
+                    <div class="team-social">
+                        <a href="#" title="GitHub">GH</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+                <!-- 辛俊 -->
+                <div class="team-card">
+                    <div class="team-avatar avatar-blue">辛</div>
+                    <h4>辛俊</h4>
+                    <p class="role">前端开发</p>
+                    <p class="bio">致力于构建响应式交互界面，注重代码质量。</p>
+                    <div class="team-social">
+                        <a href="#" title="GitHub">GH</a>
+                        <a href="#" title="邮箱">@</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 项目展示 ==================== -->
+    <section class="section" id="projects">
+        <div class="section-container">
+            <span class="section-tag">精选项目</span>
+            <h2 class="section-title">我们的作品</h2>
+            <p class="section-desc">每一个项目都是团队智慧与汗水的结晶。</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-thumb">
+                        <span class="project-icon">🛒</span>
+                        <span class="project-tag">React</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>电商平台重构</h4>
+                        <p>为某品牌完成移动端商城的前端重构，性能提升 40%。</p>
+                        <div class="project-tech">
+                            <span>React</span><span>TypeScript</span><span>Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-thumb">
+                        <span class="project-icon">📊</span>
+                        <span class="project-tag">Vue 3</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>数据可视化仪表盘</h4>
+                        <p>企业级数据分析面板，支持实时数据流与多维度筛选。</p>
+                        <div class="project-tech">
+                            <span>Vue 3</span><span>ECharts</span><span>Pinia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-thumb">
+                        <span class="project-icon">🎓</span>
+                        <span class="project-tag">全栈</span>
+                    </div>
+                    <div class="project-info">
+                        <h4>在线学习平台</h4>
+                        <p>支持视频课程、直播互动与学习进度追踪的综合平台。</p>
+                        <div class="project-tech">
+                            <span>Next.js</span><span>Node.js</span><span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA / 联系我们 ==================== -->
+    <section class="section" id="contact">
+        <div class="section-container">
+            <div class="cta-section">
+                <h3>🤝 准备好一起合作了吗？</h3>
+                <p>无论你是想加入我们，还是有项目需要技术支持，都欢迎随时联系。</p>
+                <a href="mailto:team@nexusforge.dev" class="btn btn-outline">
+                    发送邮件联系
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+                </a>
+                <p style="margin-top:16px;font-size:0.9rem;opacity:0.75;position:relative;z-index:1;">
+                    📧 team@nexusforge.dev ｜ 💬 也可通过微信公众号「NexusForge」找到我们
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <svg width="28" height="28" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#6C63FF"/><path d="M12 20L18 26L28 14" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Nexus<span>Forge</span>
+            </div>
+            <div class="footer-links">
+                <a href="#hero">首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#team">团队</a>
+                <a href="#projects">项目</a>
+                <a href="#contact">联系</a>
+            </div>
+            <p class="footer-copy">© 2025 NexusForge Team. All rights reserved. ｜ 用心打造每一个像素</p>
+        </div>
+    </footer>
+
+    <!-- ==================== 回到顶部按钮 ==================== -->
+    <button class="back-to-top" id="backToTop" aria-label="回到顶部" title="回到顶部">
+        ↑
+    </button>
+
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        (function() {
+            // === DOM 元素 ===
+            const navbar = document.getElementById('navbar');
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.getElementById('hamburger');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const backToTop = document.getElementById('backToTop');
+            const allNavAnchors = navLinks.querySelectorAll('a');
+
+            // === 汉堡菜单切换 ===
+            function openMenu() {
+                navLinks.classList.add('open');
+                hamburger.classList.add('active');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            hamburger.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            mobileOverlay.addEventListener('click', closeMenu);
+
+            // 点击导航链接后关闭菜单
+            allNavAnchors.forEach(anchor => {
+                anchor.addEventListener('click', () => {
+                    closeMenu();
+                    // 更新 active 状态
+                    allNavAnchors.forEach(a => a.classList.remove('active'));
+                    anchor.classList.add('active');
+                });
+            });
+
+            // === 导航栏滚动阴影 ===
+            function updateNavShadow() {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+
+            // === 回到顶部按钮显隐 ===
+            function updateBackToTop() {
+                if (window.scrollY > 600) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            }
+
+            // === 滚动时高亮当前区块对应的导航链接 ===
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPos = window.scrollY + 120;
+                let currentSectionId = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                allNavAnchors.forEach(anchor => {
+                    anchor.classList.remove('active');
+                    if (anchor.getAttribute('href') === '#' + currentSectionId) {
+                        anchor.classList.add('active');
+                    }
+                });
+
+                // 如果滚动到顶部附近，高亮首页
+                if (window.scrollY < 200 && !currentSectionId) {
+                    allNavAnchors.forEach(a => a.classList.remove('active'));
+                    const homeLink = navLinks.querySelector('a[href="#hero"]');
+                    if (homeLink) homeLink.classList.add('active');
+                }
+            }
+
+            // === 数字滚动动画 ===
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number[data-count]');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    const currentText = counter.textContent;
+                    const current = parseInt(currentText) || 0;
+                    if (current === target) return; // 已经动画过
+
+                    const duration = 1500;
+                    const startTime = performance.now();
+
+                    function update(now) {
+                        const elapsed = now - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // easeOutCubic
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const value = Math.round(eased * target);
+                        counter.textContent = value + (target === 100 ? '%' : '');
+                        if (progress < 1) {
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.textContent = target + (target === 100 ? '%' : '');
+                        }
+                    }
+
+                    requestAnimationFrame(update);
+                });
+            }
+
+            // === 使用 IntersectionObserver 触发计数器动画 ===
+            const aboutSection = document.getElementById('about');
+            let countersAnimated = false;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        countersAnimated = true;
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            if (aboutSection) {
+                observer.observe(aboutSection);
+            }
+
+            // === 全局滚动监听（合并优化） ===
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        updateNavShadow();
+                        updateBackToTop();
+                        updateActiveNavLink();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // === 回到顶部点击 ===
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // === 键盘 ESC 关闭菜单 ===
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
+
+            // === 初始状态检查 ===
+            updateNavShadow();
+            updateBackToTop();
+            updateActiveNavLink();
+
+            // === 页面加载完成后若 about 已在视口则触发动画 ===
+            setTimeout(() => {
+                if (aboutSection && !countersAnimated) {
+                    const rect = aboutSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        countersAnimated = true;
+                        animateCounters();
+                    }
+                }
+            }, 400);
+
+            console.log('🚀 NexusForge 团队页面已更新成员！');
+            console.log('   吉洋、黄灵果、夏考洪、雷骐源、温厚焜、陈涛、蒋熹奉、辛俊');
+        })();
+    </script>
+</body>
+</html>
