@@ -3,253 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>删库跑路 团队 | 创新开发团队</title>
-    <meta name="description" content="删库跑路 - 一个充满激情的技术团队，专注于Web开发与创新解决方案。">
-    <link rel="stylesheet" href="main.css">
+    <title>删库跑路 | 团队</title>
+    <meta name="description" content="删库跑路 — 一个全栈技术团队，专注终端级产品开发。">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ==================== 导航栏 ==================== -->
-    <nav class="navbar" id="navbar">
+    <!-- 导航栏 -->
+    <nav class="primary-nav" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo" aria-label="删库跑路 团队首页">
-                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="40" height="40" rx="12" fill="#6C63FF"/>
-                    <path d="M12 20L18 26L28 14" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <a href="#" class="nav-logo" aria-label="删库跑路">
+                <span class="wordmark-ascii">█▀ █▄▀ █▀▄ █▀▄ █▀▄ ▀▀█</span>
                 <span class="logo-text">删库跑路</span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="#hero" class="active">首页</a>
-                <a href="#about">关于我们</a>
-                <a href="#team">团队成员</a>
-                <a href="#projects">项目展示</a>
-                <a href="#contact">联系我们</a>
+                <a href="#hero" class="active">+ 首页</a>
+                <a href="#about">+ 关于</a>
+                <a href="#team">+ 团队</a>
+                <a href="#projects">+ 项目</a>
+                <a href="#contact">+ 联系</a>
             </div>
             <button class="hamburger" id="hamburger" aria-label="菜单">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
-    <!-- ==================== Hero 区域 ==================== -->
+    <!-- Hero 区域 -->
     <section class="hero section" id="hero">
-        <div class="hero-bg-decoration"></div>
-        <div class="hero-bg-decoration-2"></div>
         <div class="section-container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="dot"></span> 团队协作中 · 随时可联系
-                </div>
-                <h1 class="hero-title">
-                    我们打造<span class="highlight">卓越</span>的
-                    数字体验
-                </h1>
+                <div class="hero-label">x 团队状态</div>
+                <h1 class="hero-title">删库跑路<br><span class="highlight">终端原生</span>开发团队</h1>
                 <p class="hero-desc">
-                    删库跑路是一支充满激情的技术团队，专注于 Web 开发、
-                    UI/UX 设计与创新解决方案，助力品牌在数字世界中脱颖而出。
+                    我们是一支完全运行在终端美学下的技术团队，所有的页面、组件、交互都像 manpage 一样简洁清晰。
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        查看作品
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="#contact" class="btn btn-outline">联系团队</a>
+                    <a href="#projects" class="btn btn-ink">+ 查看作品</a>
+                    <a href="#contact" class="btn btn-ghost">联系团队</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-card-stack">
-                    <div class="hero-card card-main">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-                        </div>
-                        <div class="card-lines">
-                            <span></span><span></span><span></span>
-                        </div>
+                <!-- 唯一的暗色终端卡片 -->
+                <div class="terminal-mockup">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-title">~/workspace</span>
                     </div>
-                    <div class="hero-card card-float">
-                        <div class="mini-chart">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
-                        <small style="color:#6B6880;font-weight:500;">📈 持续增长</small>
+                    <div class="terminal-body">
+                        <pre>
+$ team --list
+  01 吉洋     full-stack
+  02 黄灵果   frontend
+  03 夏考洪   backend
+  04 雷骐源   design
+  05 温厚焜   qa
+  06 陈涛     devops
+  07 蒋熹奉   pm
+  08 辛俊     frontend
+
+$ exit
+                        </pre>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 关于我们 ==================== -->
+    <!-- 关于我们 -->
     <section class="section" id="about">
         <div class="section-container">
-            <span class="section-tag">关于我们</span>
-            <h2 class="section-title">凝聚创新力量</h2>
-            <p class="section-desc">我们是一支跨学科的技术团队，致力于用代码和设计创造价值。</p>
+            <div class="section-label">
+                <span>+ 关于我们</span>
+                <div class="hairline-rule"></div>
+            </div>
             <div class="about-grid">
-                <div class="about-visual">
-                    <div class="about-stat-card">
-                        <div class="stat-number" data-count="25">0</div>
-                        <div class="stat-label">完成项目</div>
+                <div class="stats-block">
+                    <div class="stat-row">
+                        <span class="stat-number" data-count="25">0</span>
+                        <span class="stat-label"> 个项目交付</span>
                     </div>
-                    <div class="about-stat-card">
-                        <div class="stat-number" data-count="8">0</div>
-                        <div class="stat-label">团队成员</div>
+                    <div class="stat-row">
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label"> 位核心成员</span>
                     </div>
-                    <div class="about-stat-card">
-                        <div class="stat-number" data-count="3">0</div>
-                        <div class="stat-label">成立年数</div>
+                    <div class="stat-row">
+                        <span class="stat-number" data-count="3">0</span>
+                        <span class="stat-label"> 年远程协作</span>
                     </div>
-                    <div class="about-stat-card">
-                        <div class="stat-number" data-count="100">0</div>
-                        <div class="stat-label">% 热情</div>
+                    <div class="stat-row">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">% 终端化热情</span>
                     </div>
                 </div>
-                <div class="about-text-content">
-                    <h3>🚀 我们的故事</h3>
-                    <p>删库跑路诞生于一群对技术充满热情的朋友之间。我们相信，优秀的软件不仅仅是代码的堆砌，更是对用户需求的深刻理解与对细节的不懈追求。</p>
-                    <p>从最初的小型项目起步，到如今能够承接复杂的企业级应用开发，我们始终保持着学习与成长的心态。每一位成员都是团队不可或缺的拼图。</p>
-                    <p>我们推崇<strong>开放协作、持续迭代</strong>的工作方式，确保每一个交付物都经得起考验。</p>
+                <div class="about-text">
+                    <p>
+                        <strong>+ 起源</strong> 删库跑路由一群热爱命令行的开发者组成。我们相信最好的界面就是没有界面，所有交互都能在终端里完成。
+                    </p>
+                    <p>
+                        <strong>+ 哲学</strong> 不依赖炫酷动画，不用多余色彩。代码就是文档，结构就是设计。团队成员来自不同技术背景，但共享同一套极简价值观。
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 团队成员 ==================== -->
-    <section class="section" id="team" style="background:#fff;">
+    <!-- 团队成员 -->
+    <section class="section" id="team">
         <div class="section-container">
-            <span class="section-tag">核心成员</span>
-            <h2 class="section-title">认识我们的团队</h2>
-            <p class="section-desc">多元背景，共同目标——用技术创造影响力。</p>
+            <div class="section-label">
+                <span>+ 核心成员</span>
+                <div class="hairline-rule"></div>
+            </div>
             <div class="team-grid">
+                <!-- 吉洋 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-purple">吉</div>
+                    <div class="team-avatar">吉</div>
                     <h4>吉洋</h4>
                     <p class="role">全栈开发</p>
-                    <p class="bio">热爱技术，追求卓越，负责核心架构设计。</p>
-                    <div class="team-social">
-                        <a href="#" title="GitHub">GH</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="bio">热衷系统架构，日常沉迷于 Neovim 和 Tmux。</p>
                 </div>
+                <!-- 黄灵果 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-coral">黄</div>
+                    <div class="team-avatar">黄</div>
                     <h4>黄灵果</h4>
                     <p class="role">前端开发</p>
-                    <p class="bio">专注用户体验与界面实现，让设计完美落地。</p>
-                    <div class="team-social">
-                        <a href="#" title="GitHub">GH</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="bio">将像素级设计转化为终端 CSS，擅长无障碍开发。</p>
                 </div>
+                <!-- 夏考洪 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-teal">夏</div>
+                    <div class="team-avatar">夏</div>
                     <h4>夏考洪</h4>
                     <p class="role">后端开发</p>
-                    <p class="bio">擅长系统架构与性能优化，保障服务稳定。</p>
-                    <div class="team-social">
-                        <a href="#" title="GitHub">GH</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="bio">用 Rust 和 Go 构建高性能服务，喜欢一切命令行事。</p>
                 </div>
+                <!-- 雷骐源 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-amber">雷</div>
+                    <div class="team-avatar">雷</div>
                     <h4>雷骐源</h4>
                     <p class="role">UI/UX 设计师</p>
-                    <p class="bio">创造美观且易用的设计，提升产品体验。</p>
-                    <div class="team-social">
-                        <a href="#" title="作品集">🎨</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="bio">反设计师的设计师，只画 wireframe，不碰调色盘。</p>
                 </div>
+                <!-- 温厚焜 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-indigo">温</div>
+                    <div class="team-avatar">温</div>
                     <h4>温厚焜</h4>
                     <p class="role">测试工程师</p>
-                    <p class="bio">保障产品质量的最后一道防线，细致入微。</p>
-                    <div class="team-social">
-                        <a href="#" title="GitHub">GH</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="bio">用 shell 脚本覆盖所有回归用例，坚信自动化即文档。</p>
                 </div>
+                <!-- 陈涛 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-pink">陈</div>
+                    <div class="team-avatar">陈</div>
                     <h4>陈涛</h4>
-                    <p class="role">DevOps 工程师</p>
-                    <p class="bio">自动化部署与持续集成，提升研发效率。</p>
-                    <div class="team-social">
-                        <a href="#" title="GitHub">GH</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="role">DevOps</p>
+                    <p class="bio">维护 CI/CD 管道，所有配置皆为 YAML，可视化是多余的。</p>
                 </div>
+                <!-- 蒋熹奉 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-green">蒋</div>
+                    <div class="team-avatar">蒋</div>
                     <h4>蒋熹奉</h4>
                     <p class="role">项目经理</p>
-                    <p class="bio">协调团队，确保项目顺利交付，沟通力强。</p>
-                    <div class="team-social">
-                        <a href="#" title="GitHub">GH</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="bio">沟通全靠 Markdown 和 Git issues，会议是最后的选项。</p>
                 </div>
+                <!-- 辛俊 -->
                 <div class="team-card">
-                    <div class="team-avatar avatar-blue">辛</div>
+                    <div class="team-avatar">辛</div>
                     <h4>辛俊</h4>
                     <p class="role">前端开发</p>
-                    <p class="bio">致力于构建响应式交互界面，注重代码质量。</p>
-                    <div class="team-social">
-                        <a href="#" title="GitHub">GH</a>
-                        <a href="#" title="邮箱">@</a>
-                    </div>
+                    <p class="bio">追求零 JavaScript 交互的静态网站，极简主义践行者。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 项目展示 ==================== -->
+    <!-- 项目展示 -->
     <section class="section" id="projects">
         <div class="section-container">
-            <span class="section-tag">精选项目</span>
-            <h2 class="section-title">我们的作品</h2>
-            <p class="section-desc">每一个项目都是团队智慧与汗水的结晶。</p>
+            <div class="section-label">
+                <span>+ 精选项目</span>
+                <div class="hairline-rule"></div>
+            </div>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-thumb">
-                        <span class="project-icon">🛒</span>
-                        <span class="project-tag">React</span>
+                        <span class="project-icon">📦</span>
+                        <span class="project-lang">TS</span>
                     </div>
                     <div class="project-info">
-                        <h4>电商平台重构</h4>
-                        <p>为某品牌完成移动端商城的前端重构，性能提升 40%。</p>
+                        <h4>终端 UI 组件库</h4>
+                        <p>一套适用于 CLI 工具的 React 渲染器，输出纯 ANSI 字符。</p>
                         <div class="project-tech">
-                            <span>React</span><span>TypeScript</span><span>Tailwind</span>
+                            <span>React</span><span>Ink</span><span>Node</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-thumb">
                         <span class="project-icon">📊</span>
-                        <span class="project-tag">Vue 3</span>
+                        <span class="project-lang">Go</span>
                     </div>
                     <div class="project-info">
-                        <h4>数据可视化仪表盘</h4>
-                        <p>企业级数据分析面板，支持实时数据流与多维度筛选。</p>
+                        <h4>日志流分析引擎</h4>
+                        <p>实时流式处理数百台服务器的日志，全键盘操作仪表板。</p>
                         <div class="project-tech">
-                            <span>Vue 3</span><span>ECharts</span><span>Pinia</span>
+                            <span>Go</span><span>Bubble Tea</span><span>gRPC</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-thumb">
-                        <span class="project-icon">🎓</span>
-                        <span class="project-tag">全栈</span>
+                        <span class="project-icon">📖</span>
+                        <span class="project-lang">MD</span>
                     </div>
                     <div class="project-info">
-                        <h4>在线学习平台</h4>
-                        <p>支持视频课程、直播互动与学习进度追踪的综合平台。</p>
+                        <h4>技术文档生成器</h4>
+                        <p>从注释自动生成 manpage 风格文档，无需额外工具。</p>
                         <div class="project-tech">
-                            <span>Next.js</span><span>Node.js</span><span>MongoDB</span>
+                            <span>Python</span><span>Jinja2</span><span>Markdown</span>
                         </div>
                     </div>
                 </div>
@@ -257,46 +230,37 @@
         </div>
     </section>
 
-    <!-- ==================== CTA / 联系我们 ==================== -->
+    <!-- 联系我们 -->
     <section class="section" id="contact">
         <div class="section-container">
-            <div class="cta-section">
-                <h3>🤝 准备好一起合作了吗？</h3>
-                <p>无论你是想加入我们，还是有项目需要技术支持，都欢迎随时联系。</p>
-                <a href="mailto:team@example.dev" class="btn btn-outline">
-                    发送邮件联系
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-                </a>
-                <p style="margin-top:16px;font-size:0.9rem;opacity:0.75;position:relative;z-index:1;">
-                    📧 team@example.dev ｜ 💬 也可通过微信公众号「删库跑路」找到我们
-                </p>
+            <div class="cta-block">
+                <div class="section-label">
+                    <span>+ 联系我们</span>
+                    <div class="hairline-rule"></div>
+                </div>
+                <p>如果你欣赏这种“不设计”的设计，或者有项目需要极简实现，我们很乐意聊聊。</p>
+                <a href="mailto:team@shankupaolu.dev" class="btn btn-ink">+ 发送邮件</a>
+                <p class="footer-note">也可通过微信公众号 “删库跑路” 找到我们。</p>
             </div>
         </div>
     </section>
 
-    <!-- ==================== 页脚 ==================== -->
+    <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-logo">
-                <svg width="28" height="28" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#6C63FF"/><path d="M12 20L18 26L28 14" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                删库跑路
-            </div>
             <div class="footer-links">
                 <a href="#hero">首页</a>
-                <a href="#about">关于我们</a>
+                <a href="#about">关于</a>
                 <a href="#team">团队</a>
                 <a href="#projects">项目</a>
                 <a href="#contact">联系</a>
             </div>
-            <p class="footer-copy">© 2025 删库跑路 Team. All rights reserved. ｜ 用心打造每一个像素</p>
+            <p class="footer-copy">© 2025 删库跑路 · 所有字符均由等宽字体呈现 · 无 JavaScript 也可阅读</p>
         </div>
     </footer>
 
-    <!-- ==================== 回到顶部按钮 ==================== -->
-    <button class="back-to-top" id="backToTop" aria-label="回到顶部" title="回到顶部">
-        ↑
-    </button>
+    <button class="back-to-top" id="backToTop" title="回到顶部">↑</button>
 
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
